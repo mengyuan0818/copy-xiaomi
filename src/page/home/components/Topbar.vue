@@ -23,7 +23,7 @@
           <span>|</span>
           <a href="" class="">Select Region</a>
         </div>
-        <div class="topbar-cart">
+        <div class="topbar-cart" @mouseenter='onMouseover' @mouseleave='onMouseleave'>
           <span class="iconfont">&#xe655;</span>
           <span>购物车(0)</span>
         </div>
@@ -34,6 +34,11 @@
           <span>|</span>
           <a href="" class="">消息通知</a>
         </div>
+        <transition>
+          <div class="cart-list" v-show='cartShow'>
+            <p>购物车中还没有商品，赶紧选购吧</p>
+          </div>
+        </transition>  
       </div>
     </div>
   </div>
@@ -41,7 +46,20 @@
 
 <script>
 export default {
-  name: 'TopBar'
+  name: 'TopBar',
+  data () {
+    return {
+      cartShow: false
+    }
+  },
+  methods: {
+    onMouseover () {
+      this.cartShow = true
+    },
+    onMouseleave () {
+      this.cartShow = false
+    }
+  }
 }
 </script>
 
@@ -58,6 +76,7 @@ export default {
     width: 65%
     height: .4rem
     margin: 0 auto
+    position: relative
     // -------- 导航栏 ------------
   .topbar-nav
     width: 44.2%
@@ -91,9 +110,25 @@ export default {
     height: .4rem
     line-height: .4rem
     float: right
-    background: #424242
+    background: #424242s
     color: rgb(176, 176, 176)
   .topbar-cart:hover
     background: #fff
     color: #ff6700
+    // -------- 购物车下拉菜单 ------------
+  .cart-list
+    width: 25.7%
+    height: auto
+    background: #fff
+    position: absolute
+    right: 0
+    top: .4rem
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+  .cart-list p
+    margin: .5rem auto
+    // ---------购物车动画----------
+  .v-enter-active, .v-leave-active
+    transition: opacity .3s
+  .v-enter, .v-leave-to
+    opacity: 0
 </style>
