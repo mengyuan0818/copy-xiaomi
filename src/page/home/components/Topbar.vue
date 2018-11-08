@@ -38,7 +38,7 @@
           <div class="cart-list" v-show='cartShow'>
             <p>购物车中还没有商品，赶紧选购吧</p>
           </div>
-        </transition>  
+        </transition>
       </div>
     </div>
   </div>
@@ -73,7 +73,7 @@ export default {
   .topbar a:hover
     color: #fff
   .container
-    width: 65%
+    width: 1250px
     height: .4rem
     margin: 0 auto
     position: relative
